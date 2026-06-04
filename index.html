@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -81,7 +80,6 @@ button {
   border-radius: 8px;
 }
 </style>
-
 </head>
 
 <body>
@@ -137,25 +135,36 @@ button {
       </ul>
     </div>
 
-```
-<div style="background:#e8f7ec;padding:20px;border-radius:10px;">
-  <h3>⭐⭐⭐⭐⭐ Answer B</h3>
-  <p>
-    Socialization is the process through which people learn culture, norms, and values.
-    Families serve as a primary agent of socialization by teaching children expected behaviors.
-    For example, parents often teach manners and social rules. This demonstrates how families
-    influence behavior and transmit culture across generations.
-  </p>
-  <p><strong>Why it works:</strong></p>
-  <ul>
-    <li>Uses concepts</li>
-    <li>Explains concepts</li>
-    <li>Provides examples</li>
-    <li>Connects back to the topic</li>
-  </ul>
-</div>
-```
+    <div style="background:#e8f7ec;padding:20px;border-radius:10px;">
+      <h3>⭐⭐⭐⭐⭐ Answer B</h3>
+      <p>
+        Socialization is the process through which people learn culture, norms, and values.
+        Families serve as a primary agent of socialization by teaching children expected behaviors.
+        For example, parents often teach manners and social rules. This demonstrates how families
+        influence behavior and transmit culture across generations.
+      </p>
+      <p><strong>Why it works:</strong></p>
+      <ul>
+        <li>Uses concepts</li>
+        <li>Explains concepts</li>
+        <li>Provides examples</li>
+        <li>Connects back to the topic</li>
+      </ul>
+    </div>
+  </div>
 
+  <div style="text-align:center;margin-top:24px;">
+    <p><strong>Which answer would earn more points?</strong></p>
+
+    <button onclick="compareAnswer('A')" style="background:#743449;color:white;">
+      Choose Answer A
+    </button>
+
+    <button onclick="compareAnswer('B')" style="background:#245342;color:white;">
+      Choose Answer B
+    </button>
+
+    <div id="comparisonResult" style="margin-top:22px;"></div>
   </div>
 </div>
 
@@ -167,21 +176,6 @@ button {
     ⭐⭐⭐⭐⭐ Strong Answer
   </p>
 </div>
-```html
-<div style="text-align:center;margin-top:24px;">
-  <p><strong>Which answer would earn more points?</strong></p>
-
-  <button onclick="compareAnswer('A')" style="background:#743449;color:white;">
-    Choose Answer A
-  </button>
-
-  <button onclick="compareAnswer('B')" style="background:#245342;color:white;">
-    Choose Answer B
-  </button>
-
-  <div id="comparisonResult" style="margin-top:22px;"></div>
-</div>
-```
 
 <div class="card">
   <h2 style="color:#173b57;">🏗️ The Writing Blueprint</h2>
@@ -190,28 +184,25 @@ button {
   <div style="background:#f7fbff;padding:30px;border-radius:12px;text-align:center;margin-top:20px;">
     <div style="font-size:36px;">🏠</div>
 
-```
-<div style="background:#e8f1f8;padding:15px;margin:8px;border-radius:8px;">
-  🎯 <strong>ROOF</strong><br>
-  Connect Back to the Question
-</div>
+    <div style="background:#e8f1f8;padding:15px;margin:8px;border-radius:8px;">
+      🎯 <strong>ROOF</strong><br>
+      Connect Back to the Question
+    </div>
 
-<div style="background:#fff9e8;padding:15px;margin:8px;border-radius:8px;">
-  🔍 <strong>WINDOWS</strong><br>
-  Examples and Evidence
-</div>
+    <div style="background:#fff9e8;padding:15px;margin:8px;border-radius:8px;">
+      🔍 <strong>WINDOWS</strong><br>
+      Examples and Evidence
+    </div>
 
-<div style="background:#eef6f2;padding:15px;margin:8px;border-radius:8px;">
-  📖 <strong>WALLS</strong><br>
-  Explanation and Understanding
-</div>
+    <div style="background:#eef6f2;padding:15px;margin:8px;border-radius:8px;">
+      📖 <strong>WALLS</strong><br>
+      Explanation and Understanding
+    </div>
 
-<div style="background:#f9eef2;padding:15px;margin:8px;border-radius:8px;">
-  🧠 <strong>FOUNDATION</strong><br>
-  Concepts and Key Ideas
-</div>
-```
-
+    <div style="background:#f9eef2;padding:15px;margin:8px;border-radius:8px;">
+      🧠 <strong>FOUNDATION</strong><br>
+      Concepts and Key Ideas
+    </div>
   </div>
 </div>
 
@@ -283,6 +274,30 @@ button {
 </div>
 
 <script>
+function compareAnswer(choice){
+  if(choice === "A"){
+    document.getElementById("comparisonResult").innerHTML =
+    "<div style='background:#fdeaea;padding:20px;border-left:8px solid #c0392b;border-radius:8px;text-align:left;'>" +
+    "<h3>❌ Not Quite</h3>" +
+    "<p>Answer A uses a concept, but it does not fully explain, apply, or connect the concept to the prompt.</p>" +
+    "<p><strong>It has:</strong> 🧠 Concept</p>" +
+    "<p><strong>It is missing:</strong> 📖 Explanation, 🔍 Example, and 🎯 Connection.</p>" +
+    "</div>";
+  }
+
+  if(choice === "B"){
+    document.getElementById("comparisonResult").innerHTML =
+    "<div style='background:#e8f7ec;padding:20px;border-left:8px solid #27ae60;border-radius:8px;text-align:left;'>" +
+    "<h3>✅ Correct!</h3>" +
+    "<p>Answer B is stronger because it shows understanding rather than only naming a topic.</p>" +
+    "<p>✓ 🧠 Uses a concept</p>" +
+    "<p>✓ 📖 Explains the concept</p>" +
+    "<p>✓ 🔍 Gives an example</p>" +
+    "<p>✓ 🎯 Connects back to the topic</p>" +
+    "</div>";
+  }
+}
+
 function showBlueprint(part){
   let result = "";
 
@@ -362,32 +377,6 @@ function detectiveCase(caseNum){
     "</div>";
   }
 }
-  ```javascript
-function compareAnswer(choice){
-  if(choice === "A"){
-    document.getElementById("comparisonResult").innerHTML =
-    "<div style='background:#fdeaea;padding:20px;border-left:8px solid #c0392b;border-radius:8px;text-align:left;'>" +
-    "<h3>❌ Not Quite</h3>" +
-    "<p>Answer A uses a concept, but it does not fully explain, apply, or connect the concept to the prompt.</p>" +
-    "<p><strong>It has:</strong> 🧠 Concept</p>" +
-    "<p><strong>It is missing:</strong> 📖 Explanation, 🔍 Example, and 🎯 Connection.</p>" +
-    "</div>";
-  }
-
-  if(choice === "B"){
-    document.getElementById("comparisonResult").innerHTML =
-    "<div style='background:#e8f7ec;padding:20px;border-left:8px solid #27ae60;border-radius:8px;text-align:left;'>" +
-    "<h3>✅ Correct!</h3>" +
-    "<p>Answer B is stronger because it shows understanding rather than only naming a topic.</p>" +
-    "<p>✓ 🧠 Uses a concept</p>" +
-    "<p>✓ 📖 Explains the concept</p>" +
-    "<p>✓ 🔍 Gives an example</p>" +
-    "<p>✓ 🎯 Connects back to the topic</p>" +
-    "</div>";
-  }
-}
-```
-
 </script>
 
 </body>
